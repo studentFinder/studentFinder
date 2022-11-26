@@ -11,7 +11,7 @@ import SelectBox from '../component/SelectBox/selectBox';
 import ProfileBox from '../component/profileBox/profileBox';
 import user_info from '../data/user.json';
 
-const Profile = ({accountService, dataService}) => {
+const Profile = ({dataService}) => {
 
 
     
@@ -74,7 +74,7 @@ const Profile = ({accountService, dataService}) => {
                     key={item.id} 
                     item={item} 
                     course={courses.find(i => i.id == item.courseId)}
-                    accountService={accountService}/>
+                    dataService={dataService} />
                 ))}
                 </Stack>
             }

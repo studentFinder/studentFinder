@@ -11,7 +11,7 @@ import useOnError from '../hook/useOnError';
 
 
 
-const CourseList = ({dataService, accountService}) => {
+const CourseList = ({dataService}) => {
 
     const navigate = useNavigate();
 
@@ -97,7 +97,7 @@ const CourseList = ({dataService, accountService}) => {
                 <Stack gap={4}>
                     {filteredItems.map(i => (<ItemBox key={i.id} item={i} 
                     dataService={dataService}
-                    accountService={accountService}/>))}
+                    />))}
                 </Stack>
             }
         </>

@@ -10,7 +10,7 @@ import Login from './page/login';
 import Profile from './page/profile';
 import StudentList from './page/studentList';
 
-function App({dataService, accountService}) {
+function App({dataService}) {
 
   const navigate = useNavigate();
   const location = useLocation();
@@ -52,11 +52,11 @@ function App({dataService, accountService}) {
           
             <Routes>
               <Route path="/" element={<Home />} />
-              <Route path="/courses" element={<CourseList />}/>
-              <Route path="/courses/departments/:departmentId" element={<CourseList />}/>
+              <Route path="/courses" element={<CourseList dataService={dataService}  />}/>
+              <Route path="/courses/departments/:departmentId" element={<CourseList dataService={dataService} />}/>
               <Route path="/courses/:courseId" element={<StudentList />} />
-              <Route path="/account/profile/courses" element={<Profile dataService={dataService} accountService={accountService}/>} />
-              <Route path="/account/profile/courses/:courseId" element={<Profile dataService={dataService} accountService={accountService}/>} />
+              <Route path="/account/profile/courses" element={<Profile dataService={dataService} />} />
+              <Route path="/account/profile/courses/:courseId" element={<Profile dataService={dataService}/>} />
 
               <Route path="/login" element={<Login onLogin={handleSignin} onSignUp={handleSignup} />} />
 

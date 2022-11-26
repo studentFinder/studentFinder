@@ -18,7 +18,7 @@ const buttonStyle = {
 
 
 
-const StudentList = ({dataService, accountService}) => {
+const StudentList = ({dataService}) => {
 
     const params = useParams();
 
@@ -52,7 +52,7 @@ const StudentList = ({dataService, accountService}) => {
                 <Stack gap={4}>
                     {students.map(i => (<StudentItemBox key={i.id} item={i} 
                     dataService={dataService}
-                    accountService={accountService}/>))}
+                    />))}
                 </Stack>
             }
         </div>
