@@ -1,0 +1,38 @@
+[
+    {
+        "id": 1,
+        "courseId": 1,
+        "email": "1234@student.ubc.ca",
+        "name": "Karlo Rhea"
+    },
+    {
+        "id": 2,
+        "courseId": 1,
+        "email": "1234@student.ubc.ca",
+        "name": "Xenia Mattea"
+    },
+    {
+        "id": 3,
+        "courseId": 2,
+        "email": "1234@student.ubc.ca",
+        "name": "Debbora Saynabh"
+    },
+    {
+        "id": 4,
+        "courseId": 2,
+        "email": "1234@student.ubc.ca",
+        "name": "Liana Ilmari"
+    },
+    {
+        "id": 5,
+        "courseId": 3,
+        "email": "1234@student.ubc.ca",
+        "name": "Neela Decebal"
+    },
+    {
+        "id": 6,
+        "courseId": 3,
+        "email": "1234@student.ubc.ca",
+        "name": "Neela Decebal"
+    }
+]

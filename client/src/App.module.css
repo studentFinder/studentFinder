@@ -1,0 +1,33 @@
+.body {
+  margin: 2.5% 7.5% 12.5% 7.5%;
+  padding: 2.5%;
+
+  display: flex;
+  border: 1px solid black;
+}
+
+.content {
+  flex-basis: 75%;
+}
+
+.widget {
+  flex-basis: 25%;
+  border: 1px solid black;
+  
+}
+
+@media only screen and (min-width: 992px) {
+  .content {
+      margin-right: 2%;
+  }
+}
+
+@media only screen and (max-width: 992px) {
+  .body {
+      flex-direction: column;
+  }
+
+  .content {
+      margin-bottom: 2%;
+  }
+}

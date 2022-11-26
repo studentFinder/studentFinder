@@ -1,0 +1,52 @@
+[
+    {
+        "id": 1,
+        "departmentId": 1,
+        "name": "Math 101"
+    },
+    {
+        "id": 2,
+        "departmentId": 1,
+        "name": "Math 102"
+    },
+    {
+        "id": 3,
+        "departmentId": 2,
+        "name": "Engi 101"
+    },
+    {
+        "id": 4,
+        "departmentId": 2,
+        "name": "Engi 102"
+    },
+    {
+        "id": 5,
+        "departmentId": 3,
+        "name": "Engl 101"
+    },
+    {
+        "id": 6,
+        "departmentId": 3,
+        "name": "Engl 102"
+    },
+    {
+        "id": 7,
+        "departmentId": 4,
+        "name": "Cosc 101"
+    },
+    {
+        "id": 8,
+        "departmentId": 4,
+        "name": "Cosc 102"
+    },
+    {
+        "id": 9,
+        "departmentId": 4,
+        "name": "Cosc 103"
+    },
+    {
+        "id": 10,
+        "departmentId": 5,
+        "name": "Econ 101"
+    }
+]
