@@ -54,8 +54,10 @@ const Login = ({onSignUp, onLogin}) => {
     const onSubmit = (event) => {
         event.preventDefault();
         if (signup) {
+            username && password && checkPassword && name && email &&
             onSignUp(username, password, name, email)//.catch(setError);
         } else {
+            username && password &&
             onLogin(username, password)//.catch(setError);
         }
     };

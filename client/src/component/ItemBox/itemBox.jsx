@@ -3,14 +3,14 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styles from './itemBox.module.css';
 
-const ItemBox = ({item}) => {
+const ItemBox = ({item, auth}) => {
 
     const navigate = useNavigate();
     const [user, setUser] = useState(true);
 
     const handleClick = () => {
-        if(!user) return;
-        
+        if(!auth) return;
+
         navigate(`/courses/${item.id}`);
     }
 

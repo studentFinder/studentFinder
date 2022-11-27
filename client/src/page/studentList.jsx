@@ -4,6 +4,7 @@ import { Button, Stack } from 'react-bootstrap';
 import { useParams } from 'react-router-dom';
 import StudentItemBox from '../component/studentItemsBox.jsx/studentItemBox';
 import stuItems from '../data/studentItems.json';
+import useOnError from '../hook/useOnError';
 
 const buttonStyle = {
 
@@ -21,24 +22,63 @@ const buttonStyle = {
 const StudentList = ({dataService}) => {
 
     const params = useParams();
+    const courseId = params.courseId;
 
+    const [error, onError] = useOnError('');
     const [joined, setJoined] = useState(false);
+    const [courseInfo, setCourseInfo] = useState();
+
+    const [students, setStudents] = useState([]);
+
+    useEffect(() => {
+        dataService
+        .getStudents(courseId)
+        .then((students) => setStudents([...students]))
+        .catch(onError);
+    }, [dataService, joined]);
+
+    // useEffect(() => {
+    //     console.log(courseInfo.name);
+    // }, [courseInfo])
 
 
-    //const [students, setStudents] = useState([]);
-    const [students, setStudents] = useState(stuItems.filter(e => e.courseId == params.courseId));
+    useEffect(() => {
+        dataService
+        .getJoinInfo(courseId)
+        .then((data) => data && setJoined(true))
+        .catch(onError);
 
-    //student joined course data랑
-    //student info 정보 따로 가져와야함.
+        dataService
+        .getCourseInfo(courseId)
+        .then((courseInfo) => setCourseInfo(courseInfo))
+        .catch(onError);
+    }, [dataService]);
+
+
+
 
 
     const handleClick = () => {
-        console.log("Joined!");
-        setJoined(true);
+        if(joined) {
+            dataService
+            .deleteJoin(courseId)
+            .then(() => setJoined(false))
+            .catch(onError);
+
+        }else {
+            dataService
+            .postJoin(courseId)
+            .then(() => setJoined(true))
+            .catch(onError);
+        }
+        
     }
     
     return (
         <div>
+            <h1>
+                {courseInfo && courseInfo.name}
+            </h1>
             <div className="d-flex justify-content-center mb-3">
                 <Button 
                 style={buttonStyle}

@@ -25,13 +25,12 @@ const Profile = ({dataService}) => {
     
     const [departments, setDepartments] = useState(depItems);
     const [courses, setCourses] = useState(courseItems);
-    const [userInfo, setUserInfo] = useState(user_info[0]);
+    const [userInfo, setUserInfo] = useState([]);
 
     const [department, setDepartment] = useState();
 
 
     const handleSelectDep = (dep) => {
-        //setDepartment(dep);
         navigate(`/courses/account/profile/departments/${dep}`);
     }
 
@@ -39,19 +38,33 @@ const Profile = ({dataService}) => {
         setDepartment(params.departmentId);
     }, [params]);
 
+    useEffect(() => {
+        console.log(department);
+    }, [department])
+
 
     
-    // useEffect(() => {
-    //     accountService
-    //     .getUserInfo()
-    //     .then((userInfo) => setUserInfo(userInfo))
-    //     .catch(onError);
+    useEffect(() => {
+        dataService
+        .getUserInfo()
+        .then((userInfo) => setUserInfo(userInfo))
+        .catch(onError);
 
-    //     accountService
-    //     .getUserCourses(department)
-    //     .then((i) => setCourses(i))
-    //     .catch(onError);
-    // }, [accountService, department]);
+    }, [dataService]);
+
+
+    useEffect(() => {
+        department?
+        dataService
+        .getJoinedCourseswithDepartment(department)
+        .then((i) => setCourses(i))
+        .catch(onError)
+        :
+        dataService
+        .getJoinedCourses()
+        .then((i) => setCourses(i))
+        .catch(onError);
+    }, [dataService, department]);
 
 
 

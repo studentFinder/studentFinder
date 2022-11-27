@@ -11,7 +11,10 @@ import DataService from './service/data';
 import AuthService from './service/auth';
 import TokenStorage from './db/token';
 
+//const baseURL = "//localhost:8080";
+
 const baseURL = process.env.REACT_APP_BASE_URL;
+
 const tokenStorage = new TokenStorage();
 const authErrorEventBus = new AuthErrorEventBus();
 const httpClient = new HttpClient(baseURL, authErrorEventBus);

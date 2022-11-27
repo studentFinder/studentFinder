@@ -16,13 +16,13 @@ function App({dataService}) {
   const location = useLocation();
 
 
-  //const { user, logout, signup, signin } = useAuth();
-  const [user, setUser] = useState(true);
+  const { user, logout, signup, signin } = useAuth();
+  //const [user, setUser] = useState(true);
 
   const handleLogout = () => {
     if (window.confirm('Do you want to log out?')) {
-      //logout();
-      setUser(false);
+      logout();
+      //setUser(false);
       if(
         location.pathname.includes("account")
       ) {
@@ -36,13 +36,13 @@ function App({dataService}) {
   }
 
   const handleSignup = (username, password, name, email) => {
-    //signup(username, password, name, email);
-    navigate(-1);
+    signup(username, password, name, email);
+    user && navigate(-1);
   }
 
   const handleSignin = (username, password) => {
-    //signin(username, password);
-    navigate(-1);
+    signin(username, password);
+    user && navigate(-1);
   }
   return (
     <div>
@@ -54,7 +54,7 @@ function App({dataService}) {
               <Route path="/" element={<Home />} />
               <Route path="/courses" element={<CourseList dataService={dataService}  />}/>
               <Route path="/courses/departments/:departmentId" element={<CourseList dataService={dataService} />}/>
-              <Route path="/courses/:courseId" element={<StudentList />} />
+              <Route path="/courses/:courseId" element={<StudentList dataService={dataService}/>} />
               <Route path="/courses/account/profile" element={<Profile dataService={dataService} />} />
               <Route path="/courses/account/profile/departments/:departmentId" element={<Profile dataService={dataService} />} />
 

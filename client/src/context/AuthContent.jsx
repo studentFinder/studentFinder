@@ -26,7 +26,7 @@ export function AuthProvider({authService, authErrorEventBus, children}) {
 
     const signin = useCallback(
         async (username, password) =>
-            authService.login(username, password).then((user) => setUser(user)),
+            authService.login(username, password).then((user) => user?setUser(user):console.log(user)),
         [authService]
     );
 
@@ -34,7 +34,9 @@ export function AuthProvider({authService, authErrorEventBus, children}) {
         async (username, password, name, email) =>
             authService
             .signup(username, password, name, email)
-            .then((user) => setUser(user)),
+            .then((user) => {
+                setUser(user);
+            }),
         [authService]
     );
 
