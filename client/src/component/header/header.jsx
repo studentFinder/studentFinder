@@ -38,7 +38,7 @@ const Header = ({handleLogout, handleSignin, user}) => {
     const handleClick = (e) => {
 
         if(e.target.id != "logOut") {
-            navigate(`/account/profile/courses`);
+            navigate(`/courses/account/profile`);
             return;
         }
 

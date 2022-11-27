@@ -55,8 +55,8 @@ function App({dataService}) {
               <Route path="/courses" element={<CourseList dataService={dataService}  />}/>
               <Route path="/courses/departments/:departmentId" element={<CourseList dataService={dataService} />}/>
               <Route path="/courses/:courseId" element={<StudentList />} />
-              <Route path="/account/profile/courses" element={<Profile dataService={dataService} />} />
-              <Route path="/account/profile/courses/:courseId" element={<Profile dataService={dataService}/>} />
+              <Route path="/courses/account/profile" element={<Profile dataService={dataService} />} />
+              <Route path="/courses/account/profile/departments/:departmentId" element={<Profile dataService={dataService} />} />
 
               <Route path="/login" element={<Login onLogin={handleSignin} onSignUp={handleSignup} />} />
 

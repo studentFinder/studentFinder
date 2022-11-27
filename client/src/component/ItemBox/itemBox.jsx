@@ -1,13 +1,16 @@
 import React from 'react';
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styles from './itemBox.module.css';
 
 const ItemBox = ({item}) => {
 
     const navigate = useNavigate();
+    const [user, setUser] = useState(true);
 
     const handleClick = () => {
-        console.log(item.id);
+        if(!user) return;
+        
         navigate(`/courses/${item.id}`);
     }
 

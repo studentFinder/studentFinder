@@ -32,7 +32,7 @@ const Profile = ({dataService}) => {
 
     const handleSelectDep = (dep) => {
         //setDepartment(dep);
-        navigate(`/account/profile/courses/${dep}`);
+        navigate(`/courses/account/profile/departments/${dep}`);
     }
 
     useEffect(() => {
