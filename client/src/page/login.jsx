@@ -131,7 +131,7 @@ const Login = ({onSignUp, onLogin, dataService}) => {
         }
 
         const codeNum = generateRandomCode(4);
-        console.log(codeNum);
+        console.log(codeNum);   //This code is only for tesing while developing. when deploy, this should be commented. 
         setCode(codeNum);
         
         dataService
