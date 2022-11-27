@@ -23,11 +23,9 @@ function App({dataService}) {
     if (window.confirm('Do you want to log out?')) {
       logout();
       //setUser(false);
-      if(
-        location.pathname.includes("account")
-      ) {
-        navigate('/');
-      }
+      
+      navigate('/');
+
     }
   };
 

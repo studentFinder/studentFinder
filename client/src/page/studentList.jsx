@@ -91,6 +91,7 @@ const StudentList = ({dataService}) => {
                 students &&
                 <Stack gap={4}>
                     {students.map(i => (<StudentItemBox key={i.id} item={i} 
+                    courseId={courseId}
                     dataService={dataService}
                     />))}
                 </Stack>

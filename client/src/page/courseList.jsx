@@ -99,7 +99,7 @@ const CourseList = ({dataService}) => {
                 <Stack gap={4}>
                     {filteredItems.map(i => (
                     <ItemBox key={i.id} 
-                    item={i} 
+                    item={i}
                     dataService={dataService}
                     auth={auth}
                     />))}

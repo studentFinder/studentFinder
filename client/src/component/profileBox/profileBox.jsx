@@ -2,6 +2,7 @@ import React from 'react';
 import styles from './profileBox.module.css';
 
 const ProfileBox = ({userInfo}) => {
+    console.log(userInfo);
 
     return (
         <div className={styles.box}>

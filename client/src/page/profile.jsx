@@ -87,6 +87,7 @@ const Profile = ({dataService}) => {
                     key={item.id} 
                     item={item} 
                     course={courses.find(i => i.id == item.courseId)}
+                    auth={auth}
                     dataService={dataService} />
                 ))}
                 </Stack>

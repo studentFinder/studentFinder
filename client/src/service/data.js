@@ -28,7 +28,16 @@ export default class DataService {
     }
 
     async getStudents(courseId) {
-        const data =  this.http.fetch(`/courses/${courseId}`, {    //url 앞에 /이거 빼먹지 않기.
+        const data =  this.http.fetch(`/courses/${courseId}`, {  
+            method: 'GET',
+            headers: this.getHeaders(),
+        });
+        return data;
+    }
+    
+
+    async getStudentsNum(courseId) {
+        const data =  this.http.fetch(`/courses/${courseId}/num`, {   
             method: 'GET',
             headers: this.getHeaders(),
         });
@@ -64,7 +73,7 @@ export default class DataService {
     }
 
     async getUserInfo() {
-        const data =  this.http.fetch(`/courses/account/info`, {    
+        const data =  this.http.fetch(`/courses/account/profile/info`, {    
             method: 'GET',
             headers: this.getHeaders(),
         });
