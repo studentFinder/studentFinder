@@ -9,6 +9,8 @@ import { BsSearch } from 'react-icons/bs';
 import styles from './header.module.css';
 import { useEffect } from 'react';
 import { BiLogOut } from 'react-icons/bi';
+import homeLogo1 from '../../img/homeLogo1.png';
+import homeLogo2 from '../../img/homeLogo2.png';
 
 const Header = ({handleLogout, handleSignin, user}) => {
 
@@ -49,8 +51,8 @@ const Header = ({handleLogout, handleSignin, user}) => {
     return (
         <Navbar className={styles.navbar} expand="xl">
             <Container fluid className={"mx-lg-5 "+styles.container}>
-                <Navbar.Brand as="span" className="mx-0">
-                    <Link to="/" className={styles.brand} >Student Founder</Link>
+                <Navbar.Brand as="span" className="mx-0 px-0" style={{width: "23%"}}>
+                    <Link to="/" className={styles.brand} ><img className="mx-0 my-0 py-0 px-0" style={{width:"100%", height:"100%"}} src={homeLogo1} alt="homeLogo" /></Link>
                 </Navbar.Brand>
                     <Form 
                         onSubmit={onSubmit}
@@ -70,7 +72,7 @@ const Header = ({handleLogout, handleSignin, user}) => {
                     </Form>
                     {
                         user &&
-                        <Dropdown title="Account" id="ScrollingDropdown" align="end">
+                        <Dropdown title="Account" style={{color: "black"}} id="ScrollingDropdown" align="end">
                         <Dropdown.Item id="profile" onClick={handleClick}>My Profile</Dropdown.Item>
                         <Dropdown.Divider />
                         <Dropdown.Item id="logOut" onClick={handleClick}>Sign Out</Dropdown.Item>

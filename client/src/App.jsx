@@ -62,9 +62,9 @@ function App({dataService}) {
 
             
           </div>
-          <div className={styles.widget}>
+          {/* <div className={styles.widget}>
               Widget
-          </div>
+          </div> */}
             
     
       </div>
