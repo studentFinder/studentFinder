@@ -17,6 +17,20 @@ const warning = {
     color: "rgb(220, 63, 63)"
 }
 
+const success = {
+    margin: "0% 2% 0% 2%",
+    fontSize: "90%",
+    color: "#198754"
+}
+
+function generateRandomCode(n) {
+    let str = ''
+    for (let i = 0; i < n; i++) {
+      str += Math.floor(Math.random() * 10)
+    }
+    return str
+}
+
 
 const Login = ({onSignUp, onLogin}) => {
     const {user} = useAuth();
@@ -41,6 +55,10 @@ const Login = ({onSignUp, onLogin}) => {
     const [emailError, setEmailError] = useState(false);
     const [nameError, setNameError] = useState(false);
 
+    const [sentCode, setSentCode] = useState(false);
+    const [checkCode, setCheckCode] = useState('');
+    const [checkCodeError, setCheckCodeError] = useState(false);
+
 
     const usernameForm = /^[a-zA-z0-9]{4,}$/;;
     const passwordForm = /^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{8,25}$/;
@@ -54,7 +72,7 @@ const Login = ({onSignUp, onLogin}) => {
     const onSubmit = (event) => {
         event.preventDefault();
         if (signup) {
-            username && password && checkPassword && name && email &&
+            username && password && checkPassword && name && email && checkCodeError &&
             onSignUp(username, password, name, email)//.catch(setError);
         } else {
             username && password &&
@@ -94,9 +112,29 @@ const Login = ({onSignUp, onLogin}) => {
             return 
         case 'signup':
             return setSignup(checked);
+        case 'checkCode':
+            setCheckCode(value);
+            setCheckCodeError(value == code);
         default:
         }
     };
+
+    const [code, setCode] = useState();
+    const [verified, setVerified] = useState(false);
+
+    const handleSencCode = () => {
+        if(!emailError) return;
+
+        if(sentCode) {
+            setCheckCode('');
+            setCheckCodeError(false);
+        }
+
+        const codeNum = generateRandomCode(4);
+        console.log(codeNum);
+        setCode(codeNum);
+        setSentCode(true);
+    }
 
     return (
         <div style={bodyStyle}>
@@ -146,7 +184,8 @@ const Login = ({onSignUp, onLogin}) => {
                     )}
                     {signup && !nameError && name && <p style={warning}>Please enter 4 to 12 digits using a combination of only uppercase and lowercase letters or numbers</p>}
                     {signup && (
-                    <Form.Control
+                    <div className="d-flex">
+                        <Form.Control
                         name='email'
                         type='email'
                         placeholder='Email'
@@ -155,8 +194,27 @@ const Login = ({onSignUp, onLogin}) => {
                         className='form-input'
                         required
                     />
+                    <Button className='form-btn auth-form-btn ms-2' onClick={handleSencCode} variant={emailError?"primary":"secondary"}>
+                        {!sentCode?"Send Code":"Resend"}
+                        </Button>
+                    </div>
                     )}
                     {signup && !emailError && (<p style={warning}>Email must end with @student.ubc.ca</p>)}
+                    {
+                        code && (
+                            <Form.Control
+                            name='checkCode'
+                            type='text'
+                            placeholder='Verification Code'
+                            value={checkCode}
+                            onChange={onChange}
+                            className='form-input'
+                            required
+                            />
+                        )
+                    }
+                    {signup && sentCode && checkCode!="" && !checkCodeError && (<p style={warning}>Code doesn't match</p>)}
+                    {signup && sentCode && checkCodeError && (<p style={success}>Code matched!</p>)}
                 </Stack>
                 <div className='form-signup'>
                 <input

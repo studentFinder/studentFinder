@@ -18,9 +18,6 @@ const ItemBox = ({item, auth, dataService}) => {
     
     }, [dataService, item]);
 
-    useEffect(() => {
-        console.log(studentsNum&&studentsNum[0]?studentsNum[0].studentNum:0);
-    })
 
 
 
