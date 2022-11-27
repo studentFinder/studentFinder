@@ -56,7 +56,7 @@ function App({dataService}) {
               <Route path="/courses/account/profile" element={<Profile dataService={dataService} />} />
               <Route path="/courses/account/profile/departments/:departmentId" element={<Profile dataService={dataService} />} />
 
-              <Route path="/login" element={<Login onLogin={handleSignin} onSignUp={handleSignup} />} />
+              <Route path="/login" element={<Login onLogin={handleSignin} onSignUp={handleSignup} dataService={dataService} />} />
 
             </Routes>
 

@@ -106,6 +106,15 @@ export default class DataService {
         return data;
     }
 
+    
+    async getIfCodeSent(email, code) {
+        const data =  this.http.fetch(`/auth/login/code`, {    
+            method: 'POST',
+            body: JSON.stringify({email, code}),
+        });
+        return data;
+    }
+
 
     getHeaders() {
         const token = this.tokenStorage.getToken();

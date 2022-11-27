@@ -32,7 +32,7 @@ function generateRandomCode(n) {
 }
 
 
-const Login = ({onSignUp, onLogin}) => {
+const Login = ({onSignUp, onLogin, dataService}) => {
     const {user} = useAuth();
     const navigate = useNavigate();
     useEffect(() => {
@@ -133,7 +133,10 @@ const Login = ({onSignUp, onLogin}) => {
         const codeNum = generateRandomCode(4);
         console.log(codeNum);
         setCode(codeNum);
-        setSentCode(true);
+        
+        dataService
+        .getIfCodeSent(email, codeNum)
+        .then(() => setSentCode(true));
     }
 
     return (
